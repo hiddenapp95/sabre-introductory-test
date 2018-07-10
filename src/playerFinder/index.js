@@ -4,6 +4,7 @@ export * from './constants';
 export * from './selectors';
 export { default as PlayersTable } from './components/table';
 export { default as PlayerFilters } from './components/filters/playerFilters';
+export { default as AlertDialog } from './components/alertDialog';
 export * from './actions';
 export { model };
 export default reducer;

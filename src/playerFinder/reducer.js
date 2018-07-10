@@ -2,7 +2,8 @@ import {
     FETCH_PLAYERS,
     FETCH_PLAYERS_REJECTED,
     FETCH_PLAYERS_FULFILLED,
-    FILTER_BY
+    FILTER_BY,
+    RESET
 } from './actionTypes';
 import {getFilterObjectFromArray} from "./model";
 
@@ -22,14 +23,7 @@ export default function reducer(state=initialState,action){
         case FETCH_PLAYERS_REJECTED: return {...state,fetchingPlayers:false,fetchPlayersRejected:true,fetchPlayersError:action.error};
         case FETCH_PLAYERS_FULFILLED: return {...state,fetchingPlayers:false,fetchPlayersFulfilled:true, players: action.payload};
         case FILTER_BY: return {...state, filter: {...state.filter,[action.payload.name]: action.payload.value}};
+        case RESET: return {...initialState};
         default: return {...state}
     }
 }
-
-
-//
-// export default handleActions({
-//     [FETCH_PLAYERS]: (state,action)=> ({...state ,players:state.players}),
-//     [FETCH_PLAYERS_REJECTED]: (state,action)=> ({...state,fetchingPlayers:false,fetchPlayersRejected:true,fetchPlayersError:action.error}),
-//     [FETCH_PLAYERS_FULFILLED]: (state,action)=> ({...state,fetchingPlayers:false,fetchPlayersFulfilled:true, players: action.payload}),
-// },initialState);

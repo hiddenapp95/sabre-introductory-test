@@ -1,15 +1,14 @@
 import moment from 'moment';
-import {DATE_OF_BIRTH_PROPERTY, filters} from "../assignmentConstants";
+import {DATE_OF_BIRTH_PROPERTY, filtersInfo} from "../assignmentConstants";
+import {getAgeFromDate} from "../utils/date";
 
-export const getPlayerAge = (player) =>  moment().diff(moment(player[DATE_OF_BIRTH_PROPERTY], 'YYYY-MM-DD'), 'years');
+const playerHasAge = (player,age) => getAgeFromDate(moment(player[DATE_OF_BIRTH_PROPERTY])) === parseInt(age,10);
 
-const playerHasAge = (player,age) => getPlayerAge(player) === parseInt(age,10);
+const playerPropertyHasValue = (player,property,value) => player[property].toLowerCase().includes(value.toLowerCase());
 
-const playerPropertyHasValue = (player,property,value) => player[property].includes(value);
-
-export const getFilterObjectFromArray = () => {
+export const getFilterObjectFromArray = (filtersArray=filtersInfo) => {
     let filterObject = {};
-    filters.map(filter=>{
+    filtersArray.map(filter=>{
         filterObject[filter.name] = "";
         return filter;
     });

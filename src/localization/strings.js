@@ -1,7 +1,13 @@
 const strings = {
 
+    //Error Dialog
+    alertDialogTitle: "An error occurred while fetching players",
+    alertDialogMessageInit: "Error:",
+    alertDialogMessageEnd: "click \"OK\" to try again.",
+    ok: "OK",
+
     //Filters
-    filtersTitle: "Filtrar",
+    filtersTitle: "Filters",
 
     //Toolbar
     "toolbarTitle":"Sabre introductory exercise",

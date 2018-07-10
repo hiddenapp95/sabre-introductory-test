@@ -6,6 +6,8 @@ import {
 } from './actionTypes';
 import axios from "axios/index";
 
+const API_URL = "https://football-players-b31f2.firebaseio.com/";
+
 const fetchPlayers = async (dispatch) => {
 
     dispatch({type:FETCH_PLAYERS});
@@ -16,7 +18,7 @@ const fetchPlayers = async (dispatch) => {
         return footballPlayers;
     }catch(error){
         dispatch({type:FETCH_PLAYERS_REJECTED,error:error});
-        return error;
+        throw error;
     }
 };
 
@@ -25,11 +27,9 @@ const filterPlayersBy = (filterName,value) =>
         dispatch({type:FILTER_BY,payload:{name:filterName,value:value}});
 
 const getFootballPlayers = () =>
-    axios.get("https://football-players-b31f2.firebaseio.com/players.json?print=pretty")
+    axios.get(API_URL+"/players.json?print=pretty")
         .then((response)=> response.data)
         .catch((error)=> {throw error});
-
-
 
 
 export {fetchPlayers,filterPlayersBy}

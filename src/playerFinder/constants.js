@@ -1,3 +1,1 @@
-const NAME = 'playerFinder';
-
-export {NAME}
+export const NAME = 'playerFinder';
